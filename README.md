@@ -285,17 +285,77 @@ php artisan test --filter=BlogTest
 
 ---
 
-## 🤝 Contribuciones
+## 🤝 Contribuciones y Workflow
 
-Este es un proyecto personal de portafolio, pero si encuentras bugs o tienes sugerencias:
+Este proyecto sigue una **metodología estricta** de desarrollo en equipo. Antes de contribuir:
 
-1. Abre un **Issue** describiendo el problema/sugerencia
-2. Si quieres contribuir código:
-   - Fork el proyecto
-   - Crea una rama (`git checkout -b feature/amazing-feature`)
-   - Commit tus cambios (`git commit -m 'Add amazing feature'`)
-   - Push a la rama (`git push origin feature/amazing-feature`)
-   - Abre un Pull Request
+### 📖 Lee la Documentación Obligatoria
+
+1. **[docs/AGENTS.md](docs/AGENTS.md)** - Metodología inquebrantable e inamovible del proyecto
+2. **[docs/workflow/01-team-workflow.md](docs/workflow/01-team-workflow.md)** - Flujo completo de trabajo en equipo
+3. **[docs/workflow/02-branch-protection.md](docs/workflow/02-branch-protection.md)** - Protección de rama principal
+4. **[docs/workflow/03-github-projects-setup.md](docs/workflow/03-github-projects-setup.md)** - Setup de GitHub Projects
+
+### 🔒 Reglas de Oro
+
+- ❌ **NUNCA** hacer push directo a `main` (rama protegida)
+- ✅ **SIEMPRE** trabajar en ramas feature/fix/chore
+- ✅ **SIEMPRE** crear Pull Request para mergear
+- ✅ **SIEMPRE** esperar aprobación de @eddndev antes de mergear
+- ✅ **SIEMPRE** usar los issue templates proporcionados
+
+### 📝 Cómo Contribuir
+
+1. **Crea o asígnate una Issue** usando los templates:
+   - `✨ Feature Request` para nuevas funcionalidades
+   - `🐛 Bug Report` para reportar errores
+   - `🔧 Chore` para tareas de mantenimiento
+
+2. **Crea una rama** desde `main`:
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b feature/issue-[NUM]-descripcion
+   ```
+
+3. **Desarrolla y commitea** siguiendo convenciones:
+   ```bash
+   git add .
+   git commit -m "feat(scope): descripción breve
+
+   - Detalle 1
+   - Detalle 2
+
+   Refs #[NUM]"
+   ```
+
+4. **Push y crea Pull Request**:
+   ```bash
+   git push -u origin feature/issue-[NUM]-descripcion
+   gh pr create
+   ```
+
+5. **Espera Code Review** de @eddndev
+
+6. **Después de aprobación**, el PR será mergeado automáticamente
+
+### 🎯 Convenciones de Commits
+
+- `feat(scope):` Nueva funcionalidad
+- `fix(scope):` Corrección de bug
+- `chore(scope):` Mantenimiento/refactor
+- `docs(scope):` Documentación
+- `style(scope):` Formateo
+- `test(scope):` Tests
+
+### 📋 GitHub Projects
+
+Este proyecto usa **GitHub Projects** para gestión de tareas:
+- Issues automáticamente se mueven a **Todo** al crearse
+- Se mueven a **In Progress** al asignarse
+- Se mueven a **Done** al cerrar el PR
+
+Ver [configuración completa](docs/workflow/03-github-projects-setup.md)
 
 ---
 

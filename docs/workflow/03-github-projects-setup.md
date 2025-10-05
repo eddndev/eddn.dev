@@ -1,4 +1,6 @@
-# 🔧 Setup de GitHub Projects - Instrucciones Rápidas
+# 🔧 Setup de GitHub Projects - Guía de Configuración
+
+**Esta guía es genérica y aplica a cualquier repositorio que use la metodología de AGENTS.md**
 
 ## ⚠️ IMPORTANTE: Crear Personal Access Token (PAT)
 
@@ -17,7 +19,7 @@ El workflow de automatización **requiere un PAT** porque `GITHUB_TOKEN` no tien
 
 ### Paso 2: Agregar como Secret
 
-1. **Ir a:** https://github.com/eddndev/eddn.dev/settings/secrets/actions
+1. **Ir a:** `https://github.com/[OWNER]/[REPO]/settings/secrets/actions`
 2. **Click:** "New repository secret"
 3. **Name:** `PROJECT_PAT`
 4. **Secret:** Pegar el token copiado
@@ -42,7 +44,7 @@ Una vez agregado el secret `PROJECT_PAT`:
 
 3. **Verificar en el proyecto:**
    - La issue debería moverse automáticamente a "In Progress"
-   - URL: https://github.com/users/eddndev/projects/2
+   - URL: `https://github.com/users/[OWNER]/projects/[NUM]`
 
 ---
 
@@ -58,11 +60,10 @@ Una vez configurado el PAT, estas automatizaciones funcionan:
 
 ---
 
-## 📋 Estado Actual
+## 📋 Información del Proyecto
 
-- **Proyecto:** https://github.com/users/eddndev/projects/2
-- **PROJECT_ID:** `PVT_kwHOCUkKF84BEw60`
-- **Issues en Todo:** 26 tareas del Sprint 1
+- **Proyecto:** `https://github.com/users/[OWNER]/projects/[NUM]`
+- **PROJECT_ID:** (Ver en output de `gh project create`)
 - **Workflow:** `.github/workflows/project-board-automation.yml`
 
 ---
