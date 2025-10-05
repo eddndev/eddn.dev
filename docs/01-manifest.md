@@ -66,7 +66,8 @@
   - Reflexiones sobre la industria
 - Sistema de tags/categorías
 - Buscador de contenido
-- Formato: Markdown con syntax highlighting
+- Formato: Contenido gestionado desde CMS (subdominio separado)
+- Editor visual/WYSIWYG en CMS
 - **NO incluye:** Sistema de comentarios, suscripción a newsletter
 
 #### Sección: Aprendizaje / Recursos
@@ -90,20 +91,22 @@
 
 ### 3.2 Características NO Incluidas (Fuera del Alcance Inicial)
 
-- Panel de administración (será un proyecto separado en subdominio)
 - Sistema de comentarios en blog
 - Newsletter/Email marketing
 - E-commerce o venta de servicios
-- Sistema de autenticación de usuarios
+- Sistema de autenticación de usuarios en frontend (solo en CMS)
 - Chat en vivo
 - Traducción multiidioma (solo español en MVP)
+- Editor de contenido inline (todo se gestiona desde CMS)
 
 ### 3.3 Fases Futuras (Backlog Estratégico)
 
-**Fase 2: CMS Headless**
+**Fase 2: CMS Completo** (Proyecto paralelo)
 - Panel admin en subdominio (admin.eddn.dev)
-- API para gestión de contenido
-- Editor Markdown con preview
+- API RESTful para gestión de contenido
+- Editor WYSIWYG/visual para blog y recursos
+- Gestión de medios (imágenes, archivos descargables)
+- Sistema de autenticación y roles
 
 **Fase 3: Plataforma de Aprendizaje**
 - Sistema de cursos completo
@@ -120,15 +123,16 @@
 ## 4. Stack Tecnológico
 
 ### Frontend
-- **Framework:** Laravel 11 (Blade templating)
+- **Framework:** Laravel 12 (Blade templating)
 - **CSS:** Tailwind CSS 4.x
 - **Animaciones:** GSAP 3.13 + Lenis 1.x
 - **Build Tool:** Vite 7.x
 
-### Backend (Fase Actual)
-- **Framework:** Laravel 11
-- **Base de Datos:** MySQL 8.x (para contenido dinámico futuro)
-- **Storage:** Sistema de archivos local (para Markdown en MVP)
+### Backend
+- **Framework:** Laravel 12
+- **Base de Datos:** MySQL 8.x
+- **CMS:** Sistema separado en subdominio (admin.eddn.dev) para gestión de contenido
+- **API:** RESTful API para comunicación entre frontend y CMS
 
 ### Infraestructura
 - **Hosting:** Apache (local dev), TBD para producción
@@ -226,9 +230,10 @@ Dado que no es un sitio de conversión, las métricas son diferentes:
 | Riesgo | Probabilidad | Impacto | Mitigación |
 |--------|--------------|---------|------------|
 | Animaciones pesadas afectan performance | Media | Alto | Testing continuo, lazy loading, optimización progresiva |
-| Contenido estático difícil de mantener | Alta | Medio | Markdown con estructura clara, documentación de proceso |
+| Dependencia del CMS para contenido | Alta | Medio | Implementar sistema de caché robusto, fallbacks para contenido |
 | Scope creep en diseño/animaciones | Alta | Medio | Definir límite de animaciones por sección en design system |
 | Falta de contenido para blog | Media | Medio | Crear calendario editorial, tener 5 artículos pre-escritos para launch |
+| Latencia API CMS afecta performance | Media | Alto | Cache de contenido, CDN para assets, estrategias de pre-fetch |
 
 ---
 
@@ -258,12 +263,14 @@ Dado que no es un sitio de conversión, las métricas son diferentes:
 - [ ] Páginas de detalle de proyecto
 - [ ] Integración con GitHub API (para repos open source)
 
-### Sprint 4: Blog Engine
-- [ ] Sistema de parseo Markdown
-- [ ] Listado de artículos
+### Sprint 4: Blog & API Integration
+- [ ] Modelos y migraciones para blog (posts, tags, categorías)
+- [ ] Controladores y rutas para API de contenido
+- [ ] Listado de artículos con paginación
 - [ ] Página de artículo individual
-- [ ] Tags y categorías
-- [ ] Buscador
+- [ ] Sistema de tags y categorías
+- [ ] Buscador de contenido
+- [ ] Sistema de caché para contenido del CMS
 
 ### Sprint 5: Aprendizaje & Contacto
 - [ ] Sección de recursos/cursos
