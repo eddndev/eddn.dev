@@ -41,9 +41,12 @@
 
 ### 5. GitHub CLI y Automatización
 - ✅ **SIEMPRE** verificar scopes de autenticación (`project`, `read:project`) antes de crear proyectos
+- ✅ **SIEMPRE** crear un Personal Access Token (PAT) con scopes `repo` y `project` para workflows
+- ✅ **SIEMPRE** agregar el PAT como secret `PROJECT_PAT` en el repositorio
 - ✅ **SIEMPRE** guardar IDs del proyecto (PROJECT_ID, STATUS_FIELD_ID, etc.) en variables de entorno del workflow
 - ✅ **SIEMPRE** usar la checklist de la sección 5.F al configurar un proyecto nuevo
 - ❌ **NUNCA** crear proyectos sin workflows de automatización
+- ❌ **NUNCA** usar solo GITHUB_TOKEN para Projects (no tiene permisos suficientes)
 
 **Si un agente rompe alguna de estas reglas, debe detenerse y corregir inmediatamente antes de continuar.**
 
@@ -260,6 +263,31 @@ gh auth refresh -h github.com -s project,read:project
 
 **Scopes requeridos:** `project`, `read:project`
 
+### A.1 Crear Personal Access Token (PAT) para Workflows
+
+**⚠️ CRÍTICO:** Los workflows de GitHub Actions NO pueden usar `GITHUB_TOKEN` para Projects porque no tiene permisos suficientes.
+
+**Pasos para crear el PAT:**
+
+1. Ir a: https://github.com/settings/tokens
+2. Click "Generate new token" → "Generate new token (classic)"
+3. Nombre: `PROJECT_AUTOMATION`
+4. Seleccionar scopes:
+   - ✅ `repo` (Full control of private repositories)
+   - ✅ `project` (Full control of projects)
+5. Click "Generate token"
+6. **COPIAR EL TOKEN** (solo se muestra una vez)
+
+**Agregar el PAT como secret:**
+
+1. Ir a: `https://github.com/[OWNER]/[REPO]/settings/secrets/actions`
+2. Click "New repository secret"
+3. Name: `PROJECT_PAT`
+4. Secret: pegar el token copiado
+5. Click "Add secret"
+
+El workflow ya está configurado para usar `${{ secrets.PROJECT_PAT || secrets.GITHUB_TOKEN }}` automáticamente.
+
 ### B. Crear un Nuevo GitHub Project
 
 **Paso 1: Crear el proyecto**
@@ -426,15 +454,19 @@ jobs:
 **Checklist para el agente:**
 
 1. [ ] Verificar autenticación de GitHub CLI con scopes `project` y `read:project`
-2. [ ] Crear el GitHub Project con `gh project create`
-3. [ ] Guardar el `PROJECT_ID` del JSON resultante
-4. [ ] Obtener `STATUS_FIELD_ID` y los IDs de opciones (Todo, In Progress, Done) con `gh project field-list`
-5. [ ] Guardar todos los IDs en variables de entorno del workflow
-6. [ ] Crear archivo `.github/workflows/project-board-automation.yml` con las automatizaciones
-7. [ ] Añadir todas las issues del sprint actual al proyecto con `gh project item-add`
-8. [ ] Mover issues desde "No Status" a "Todo" usando GraphQL API
-9. [ ] Documentar el PROJECT_ID y comandos útiles en el README o docs del proyecto específico
-10. [ ] Commitear los workflows y hacer push
+2. [ ] **CREAR Personal Access Token (PAT)** con scopes `repo` y `project`
+3. [ ] **AGREGAR el PAT como secret `PROJECT_PAT`** en settings del repositorio
+4. [ ] Crear el GitHub Project con `gh project create`
+5. [ ] Guardar el `PROJECT_ID` del JSON resultante
+6. [ ] Obtener `STATUS_FIELD_ID` y los IDs de opciones (Todo, In Progress, Done) con `gh project field-list`
+7. [ ] Guardar todos los IDs en variables de entorno del workflow
+8. [ ] Crear archivo `.github/workflows/project-board-automation.yml` con las automatizaciones
+9. [ ] Verificar que el workflow usa `${{ secrets.PROJECT_PAT || secrets.GITHUB_TOKEN }}`
+10. [ ] Añadir todas las issues del sprint actual al proyecto con `gh project item-add`
+11. [ ] Mover issues desde "No Status" a "Todo" usando GraphQL API
+12. [ ] Documentar el PROJECT_ID y comandos útiles en el README o docs del proyecto específico
+13. [ ] Commitear los workflows y hacer push
+14. [ ] **INSTRUIR AL USUARIO** que debe crear el PAT y agregarlo como secret
 
 ### G. Comandos de Consulta Útiles
 
