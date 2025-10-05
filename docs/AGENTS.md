@@ -1,7 +1,51 @@
 # Estándar de Gestión de Proyecto y Documentación
 
-**Versión:** 1.0
+**Versión:** 1.1
+**Última Actualización:** 2025-10-04
 **Propósito:** Este documento describe la metodología, herramientas y flujos de trabajo a seguir durante el ciclo de vida del desarrollo. Su objetivo es asegurar la consistencia, claridad y trazabilidad en todas las fases.
+
+**⚠️ IMPORTANTE: Esta metodología es INQUEBRANTABLE e INAMOVIBLE.**
+
+---
+
+## ⚠️ REGLAS INQUEBRANTABLES
+
+**Esta metodología es OBLIGATORIA e INAMOVIBLE. Los agentes DEBEN seguir estas reglas sin excepción:**
+
+### 1. Issues y Épicas
+- ✅ **SIEMPRE** crear issues usando la plantilla definida en la sección C (Descripción + Criterios de Aceptación + Tareas Técnicas)
+- ✅ **SIEMPRE** usar el sistema de labels correcto (Type, Module, Priority, Sprint)
+- ❌ **NUNCA** añadir Épicas (label `Epic`) al proyecto Kanban
+- ❌ **NUNCA** crear issues sin criterios de aceptación medibles
+- ❌ **NUNCA** crear issues genéricas sin detallar las tareas técnicas
+
+### 2. GitHub Projects
+- ✅ **SIEMPRE** crear un GitHub Project para cada repositorio nuevo
+- ✅ **SIEMPRE** configurar workflows de automatización usando la plantilla en sección 5.E
+- ✅ **SIEMPRE** mover issues manualmente a "Todo" si los workflows no están activos
+- ❌ **NUNCA** dejar issues en "No Status" sin razón
+- ❌ **NUNCA** tener más de 1 tarea en "In Progress" por desarrollador
+
+### 3. Sprints
+- ✅ **SIEMPRE** crear una Épica Maestra para cada sprint
+- ✅ **SIEMPRE** crear y actualizar el diario del sprint en `/docs/sprints/`
+- ✅ **SIEMPRE** documentar decisiones técnicas y bloqueos en tiempo real
+- ❌ **NUNCA** empezar un sprint sin su documento en `/docs/sprints/`
+- ❌ **NUNCA** cerrar un sprint sin completar la retrospectiva
+
+### 4. Documentación
+- ✅ **SIEMPRE** aplicar filosofía "Docs-First": documentar ANTES de implementar
+- ✅ **SIEMPRE** actualizar `/docs/` cuando cambien decisiones de arquitectura
+- ❌ **NUNCA** crear código sin documentación previa en `/docs/`
+- ❌ **NUNCA** dejar documentación desactualizada
+
+### 5. GitHub CLI y Automatización
+- ✅ **SIEMPRE** verificar scopes de autenticación (`project`, `read:project`) antes de crear proyectos
+- ✅ **SIEMPRE** guardar IDs del proyecto (PROJECT_ID, STATUS_FIELD_ID, etc.) en variables de entorno del workflow
+- ✅ **SIEMPRE** usar la checklist de la sección 5.F al configurar un proyecto nuevo
+- ❌ **NUNCA** crear proyectos sin workflows de automatización
+
+**Si un agente rompe alguna de estas reglas, debe detenerse y corregir inmediatamente antes de continuar.**
 
 ---
 
