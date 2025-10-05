@@ -1,7 +1,7 @@
 name: 🐛 Bug Report
 description: Reportar un error o comportamiento inesperado
 title: "[Bug] "
-labels: ["Type: Bug", "Status: Needs Triage"]
+labels: ["Type: Bug"]
 body:
   - type: markdown
     attributes:
@@ -77,9 +77,9 @@ body:
       label: 🚨 Severidad
       description: ¿Qué tan crítico es este bug?
       options:
-        - Priority: High (Bloquea funcionalidad crítica)
-        - Priority: Medium (Afecta UX pero hay workaround)
-        - Priority: Low (Cosmético o edge case)
+        - "High - Bloquea funcionalidad crítica"
+        - "Medium - Afecta UX pero hay workaround"
+        - "Low - Cosmético o edge case"
     validations:
       required: true
 
@@ -89,10 +89,10 @@ body:
       label: 📦 Módulo Afectado
       description: ¿Qué módulo está afectado?
       options:
-        - Module: Frontend
-        - Module: Backend
-        - Module: Database
-        - Module: DevOps
+        - Frontend
+        - Backend
+        - Database
+        - DevOps
     validations:
       required: true
 

@@ -1,7 +1,7 @@
 name: 🔧 Chore / Maintenance
 description: Tarea de mantenimiento, refactor, o configuración
 title: "[Chore] "
-labels: ["Type: Chore", "Status: Needs Triage"]
+labels: ["Type: Chore"]
 body:
   - type: markdown
     attributes:
@@ -68,12 +68,12 @@ body:
       label: 📦 Módulo
       description: ¿A qué módulo afecta?
       options:
-        - Module: Frontend
-        - Module: Backend
-        - Module: Database
-        - Module: DevOps
-        - Module: Design
-        - Module: Docs
+        - Frontend
+        - Backend
+        - Database
+        - DevOps
+        - Design
+        - Docs
     validations:
       required: true
 
@@ -83,9 +83,9 @@ body:
       label: 🎯 Prioridad
       description: ¿Qué prioridad tiene esta tarea?
       options:
-        - Priority: High
-        - Priority: Medium
-        - Priority: Low
+        - High
+        - Medium
+        - Low
     validations:
       required: true
 
@@ -93,8 +93,8 @@ body:
     id: sprint
     attributes:
       label: 🏃 Sprint
-      description: ¿A qué sprint pertenece? (opcional)
-      placeholder: "Sprint: 1"
+      description: ¿A qué sprint pertenece? (opcional - usar número solamente)
+      placeholder: "1"
     validations:
       required: false
 

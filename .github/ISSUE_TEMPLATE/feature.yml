@@ -1,7 +1,7 @@
 name: ✨ Feature Request
 description: Proponer una nueva funcionalidad
 title: "[Feature] "
-labels: ["Type: Feature", "Status: Needs Triage"]
+labels: ["Type: Feature"]
 body:
   - type: markdown
     attributes:
@@ -51,12 +51,12 @@ body:
       label: 📦 Módulo
       description: ¿A qué módulo pertenece esta funcionalidad?
       options:
-        - Module: Frontend
-        - Module: Backend
-        - Module: Database
-        - Module: DevOps
-        - Module: Design
-        - Module: Docs
+        - Frontend
+        - Backend
+        - Database
+        - DevOps
+        - Design
+        - Docs
     validations:
       required: true
 
@@ -66,9 +66,9 @@ body:
       label: 🎯 Prioridad
       description: ¿Qué prioridad tiene esta funcionalidad?
       options:
-        - Priority: High
-        - Priority: Medium
-        - Priority: Low
+        - High
+        - Medium
+        - Low
     validations:
       required: true
 
@@ -76,8 +76,8 @@ body:
     id: sprint
     attributes:
       label: 🏃 Sprint
-      description: ¿A qué sprint pertenece? (opcional)
-      placeholder: "Sprint: 1"
+      description: ¿A qué sprint pertenece? (opcional - usar número solamente)
+      placeholder: "1"
     validations:
       required: false
 
