@@ -38,7 +38,7 @@ jobs:
         if: steps.status.outputs.OPTION_ID != ''
         id: get-item
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PROJECT_PAT || secrets.GITHUB_TOKEN }}
           ISSUE_NODE_ID: ${{ github.event.issue.node_id }}
         run: |
           ITEM_ID=$(gh api graphql -f query='
@@ -91,7 +91,7 @@ jobs:
       - name: Update project item status
         if: steps.get-item.outputs.ITEM_ID != ''
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PROJECT_PAT || secrets.GITHUB_TOKEN }}
         run: |
           gh api graphql -f query='
             mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $optionId: String!) {
