@@ -1,61 +1,359 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# edd n'dev Portfolio
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Status](https://img.shields.io/badge/status-in%20development-yellow)
+![Laravel](https://img.shields.io/badge/Laravel-12-red)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.x-38bdf8)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-## About Laravel
+**Portafolio web y plataforma de marca personal** para edd n'dev, un estudio independiente de desarrollo web y marketing digital.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este proyecto combina un portafolio profesional, blog técnico y plataforma de recursos educativos con animaciones avanzadas controladas por scroll.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🎯 Visión del Proyecto
 
-## Learning Laravel
+**edd n'dev** no es un funnel de conversión tradicional. Es una **huella digital auténtica** que:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- 🚀 Muestra proyectos profesionales y open source
+- 📝 Comparte conocimiento a través de blog y recursos educativos
+- 💼 Establece presencia profesional sin presión comercial
+- ✨ Experimenta con animaciones modernas y tecnologías de vanguardia
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠️ Stack Tecnológico
 
-## Laravel Sponsors
+### Frontend
+- **Framework:** Laravel 12 (Blade Templating)
+- **CSS:** Tailwind CSS 4.x
+- **Animaciones:** GSAP 3.13 + ScrollTrigger
+- **Smooth Scroll:** Lenis 1.x
+- **Build Tool:** Vite 7.x
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Backend
+- **Framework:** Laravel 12
+- **Base de Datos:** MySQL 8.x
+- **ORM:** Eloquent
+- **Cache:** Redis (producción) / File (desarrollo)
 
-### Premium Partners
+### Infraestructura
+- **Dev Server:** Apache (XAMPP/Local)
+- **Control de Versiones:** Git + GitHub
+- **Metodología:** Docs-First Development
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🎨 Características Principales
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### ✨ Experiencia Visual
+- Animaciones suaves controladas por scroll (GSAP + Lenis)
+- Dark/Light mode completo
+- Diseño responsive mobile-first
+- Performance optimizado (Core Web Vitals)
 
-## Code of Conduct
+### 📄 Secciones del Sitio
+- **Hero/Landing:** Presentación impactante con animaciones
+- **Sobre Mí:** Historia personal, skills, experiencia
+- **Servicios:** Desarrollo web y marketing
+- **Portafolio:** Proyectos de cliente y open source
+- **Blog:** Tutoriales, experiencias, opinión técnica
+- **Recursos:** Cursos, guías, templates descargables
+- **Contacto:** Formulario simple + links sociales
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 🔧 Funcionalidades Técnicas
+- Sistema de tags unificado para blog/proyectos/recursos
+- Buscador de contenido fulltext
+- Filtros por tecnología y categoría
+- Integración con GitHub API (repos open source)
+- Sistema de caché robusto
+- SEO optimizado (meta tags, Open Graph, Schema.org)
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 📚 Documentación
 
-## License
+El proyecto sigue la metodología **Docs-First**. Toda la documentación vive en `/docs/`:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **[01-manifest.md](docs/01-manifest.md)**: Visión, objetivos y alcance del proyecto
+- **[02-design-system.md](docs/02-design-system.md)**: Paleta de colores, tipografía, componentes
+- **[03-database-schema.md](docs/03-database-schema.md)**: Esquema de base de datos completo
+- **[04-user-stories.md](docs/04-user-stories.md)**: Historias de usuario y backlog
+- **[AGENTS.md](docs/AGENTS.md)**: Estándar de gestión de proyecto
+
+### Paleta de Colores
+
+El diseño se basa en **morados vibrantes** y **azules metálicos**, optimizados para light y dark mode:
+
+- **Primary:** Purple (#a855f7)
+- **Secondary:** Blue (#2563eb)
+- **Neutral:** Slate (textos y fondos)
+
+---
+
+## 🚀 Instalación Local
+
+### Requisitos Previos
+
+- PHP 8.2+
+- Composer
+- Node.js 18+ y npm
+- MySQL 8.x
+- Apache/Nginx
+
+### Pasos de Instalación
+
+1. **Clonar el repositorio**
+```bash
+git clone https://github.com/tuusuario/eddn.dev.git
+cd eddn.dev
+```
+
+2. **Instalar dependencias PHP**
+```bash
+composer install
+```
+
+3. **Instalar dependencias JavaScript**
+```bash
+npm install
+```
+
+4. **Configurar variables de entorno**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+Editar `.env` con tus credenciales de base de datos:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=eddn_dev
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+5. **Crear base de datos**
+```bash
+# En MySQL
+CREATE DATABASE eddn_dev CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+6. **Ejecutar migraciones y seeders**
+```bash
+php artisan migrate --seed
+```
+
+7. **Crear symlink para storage**
+```bash
+php artisan storage:link
+```
+
+8. **Compilar assets**
+```bash
+# Desarrollo
+npm run dev
+
+# Producción
+npm run build
+```
+
+9. **Levantar servidor de desarrollo**
+```bash
+php artisan serve
+```
+
+El sitio estará disponible en: `http://localhost:8000`
+
+---
+
+## 📦 Estructura del Proyecto
+
+```
+eddn.dev/
+├── app/
+│   ├── Http/Controllers/      # Controladores
+│   ├── Models/                 # Modelos Eloquent
+│   └── View/Components/        # Componentes Blade
+├── database/
+│   ├── migrations/             # Migraciones
+│   ├── seeders/                # Seeders
+│   └── factories/              # Factories para testing
+├── docs/                       # 📚 Documentación del proyecto
+│   ├── 01-manifest.md
+│   ├── 02-design-system.md
+│   ├── 03-database-schema.md
+│   ├── 04-user-stories.md
+│   └── AGENTS.md
+├── resources/
+│   ├── css/                    # Estilos Tailwind
+│   ├── js/
+│   │   └── app.js             # Entry point (GSAP + Lenis)
+│   └── views/                  # Vistas Blade
+├── public/
+│   └── storage/                # Symlink a storage/app/public
+├── routes/
+│   └── web.php                 # Rutas del sitio
+├── tailwind.config.js          # Configuración de Tailwind
+├── vite.config.js              # Configuración de Vite
+└── package.json                # Dependencias Node
+```
+
+---
+
+## 🎯 Roadmap
+
+### ✅ Sprint 0: Fundación (Actual)
+- [x] Instalación de GSAP y Lenis
+- [x] Documentación base completa
+- [ ] Setup de estructura de archivos
+
+### 📋 Sprint 1: Core Layout & Animations
+- [ ] Sistema de design tokens en Tailwind
+- [ ] Layout base con dark/light mode
+- [ ] Navegación principal + footer
+- [ ] Smooth scroll configurado
+- [ ] Primeras animaciones de scroll
+
+### 📋 Sprint 2: Home & About
+- [ ] Hero section con animaciones
+- [ ] Sección "Sobre mí" completa
+- [ ] Sección "Lo que hago"
+- [ ] Skills visualization
+
+### 📋 Sprint 3: Proyectos
+- [ ] Sistema de showcase de proyectos
+- [ ] Filtros y búsqueda
+- [ ] Páginas de detalle
+- [ ] Integración con GitHub API
+
+### 📋 Sprint 4: Blog & API
+- [ ] Modelos y migraciones
+- [ ] Listado y detalle de posts
+- [ ] Tags y categorías
+- [ ] Buscador
+- [ ] Sistema de caché
+
+### 📋 Sprint 5: Recursos & Contacto
+- [ ] Sección de recursos/cursos
+- [ ] Formulario de contacto
+- [ ] Integración de redes sociales
+
+### 📋 Sprint 6: Polish & Launch
+- [ ] Optimización de performance
+- [ ] SEO completo
+- [ ] Testing cross-browser
+- [ ] Deploy a producción
+
+---
+
+## 🧪 Testing
+
+```bash
+# Ejecutar tests
+php artisan test
+
+# Con coverage
+php artisan test --coverage
+
+# Tests específicos
+php artisan test --filter=BlogTest
+```
+
+---
+
+## 📈 Performance Targets
+
+- **LCP (Largest Contentful Paint):** < 2.5s
+- **FID (First Input Delay):** < 100ms
+- **CLS (Cumulative Layout Shift):** < 0.1
+- **Lighthouse Score:** > 90 en todas las categorías
+- **Animaciones:** 60fps garantizados
+
+---
+
+## 🔐 Seguridad
+
+- ✅ Validación de inputs con FormRequests
+- ✅ Sanitización de contenido HTML (HTMLPurifier)
+- ✅ Rate limiting en formulario de contacto
+- ✅ CSRF protection (Laravel default)
+- ✅ XSS protection con Blade escaping
+- ✅ SQL Injection prevention (Eloquent ORM)
+
+---
+
+## 🤝 Contribuciones
+
+Este es un proyecto personal de portafolio, pero si encuentras bugs o tienes sugerencias:
+
+1. Abre un **Issue** describiendo el problema/sugerencia
+2. Si quieres contribuir código:
+   - Fork el proyecto
+   - Crea una rama (`git checkout -b feature/amazing-feature`)
+   - Commit tus cambios (`git commit -m 'Add amazing feature'`)
+   - Push a la rama (`git push origin feature/amazing-feature`)
+   - Abre un Pull Request
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia **MIT**. Ver el archivo [LICENSE](LICENSE) para más detalles.
+
+---
+
+## 👤 Autor
+
+**Eduardo (edd n'dev)**
+- Portfolio: [eddn.dev](https://eddn.dev) (en construcción)
+- GitHub: [@tu-usuario](https://github.com/tu-usuario)
+- LinkedIn: [Tu LinkedIn](https://linkedin.com/in/tu-perfil)
+- Email: [tu@email.com](mailto:tu@email.com)
+
+---
+
+## 🙏 Agradecimientos
+
+- **Inspiración Visual:** [konpo.studio](https://konpo.studio)
+- **Animaciones:** GSAP + Lenis
+- **Framework:** Laravel Team
+- **Comunidad:** Todos los que comparten conocimiento
+
+---
+
+## 📝 Notas de Desarrollo
+
+### Comandos Útiles
+
+```bash
+# Limpiar caché
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+
+# Regenerar autoload
+composer dump-autoload
+
+# Optimizar para producción
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+# Compilar assets para producción
+npm run build
+```
+
+### Convenciones de Código
+
+- **Branches:** `feature/nombre`, `fix/nombre`, `docs/nombre`
+- **Commits:** Mensajes descriptivos en inglés
+- **Código:** PSR-12 coding standard
+- **Base de Datos:** Snake_case para tablas y columnas
+- **Rutas:** Kebab-case para URLs (`/blog/mi-articulo`)
+
+---
+
+**Construido con ❤️ usando Laravel, Tailwind, GSAP y mucho café ☕**
