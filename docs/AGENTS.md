@@ -193,3 +193,224 @@ Un sprint es un ciclo de trabajo con un objetivo claro.
 
       * Al completar todas las `Tareas`, se cierra la `Épica Maestra`.
       * Se completa la sección "Resultado del Sprint" en el diario, anotando resúmenes y aprendizajes.
+
+---
+
+## 5. GitHub Projects - Guía para Agentes
+
+### Propósito
+
+Esta sección documenta cómo los agentes deben crear, configurar y gestionar GitHub Projects para cualquier proyecto que siga esta metodología.
+
+### A. Verificación de Autenticación
+
+Antes de trabajar con Projects, verificar que GitHub CLI tiene los scopes necesarios:
+
+```bash
+# Verificar autenticación
+gh auth status
+
+# Si faltan scopes de project, actualizar:
+gh auth refresh -h github.com -s project,read:project
+```
+
+**Scopes requeridos:** `project`, `read:project`
+
+### B. Crear un Nuevo GitHub Project
+
+**Paso 1: Crear el proyecto**
+
+```bash
+gh project create --owner [USERNAME] --title "[NOMBRE DEL PROYECTO]" --format json
+```
+
+Esto devuelve un JSON con:
+- `id`: ID del proyecto (formato: `PVT_xxxxx`) - **GUARDAR ESTE ID**
+- `url`: URL del proyecto
+- `number`: Número del proyecto
+
+**Paso 2: Extraer IDs importantes**
+
+```bash
+# Listar campos del proyecto para obtener IDs
+gh project field-list [PROJECT_NUMBER] --owner [USERNAME] --format json --limit 20
+```
+
+Buscar en el output:
+- `Status` field → guardar su `id` (PVTSSF_xxxxx)
+- Opciones de Status → guardar IDs de: `Todo`, `In Progress`, `Done`
+
+**Ejemplo de output:**
+```json
+{
+  "id": "PVTSSF_xxxxx",
+  "name": "Status",
+  "options": [
+    {"id": "f75ad846", "name": "Todo"},
+    {"id": "47fc9ee4", "name": "In Progress"},
+    {"id": "98236657", "name": "Done"}
+  ]
+}
+```
+
+### C. Añadir Issues al Proyecto
+
+**Añadir una issue individual:**
+
+```bash
+gh project item-add [PROJECT_NUMBER] --owner [USERNAME] --url https://github.com/[OWNER]/[REPO]/issues/[NUM]
+```
+
+**Añadir múltiples issues (loop):**
+
+```bash
+for issue in {START..END}; do
+  gh project item-add [PROJECT_NUMBER] --owner [USERNAME] --url "https://github.com/[OWNER]/[REPO]/issues/$issue"
+  echo "Issue #$issue agregada"
+done
+```
+
+**Regla importante:** Las issues con label `Epic` NO deben añadirse al proyecto Kanban (solo sirven para tracking).
+
+### D. Mover Issues entre Columnas
+
+Para mover issues entre columnas, usar GraphQL API:
+
+**Paso 1: Obtener el Item ID de la issue en el proyecto**
+
+```bash
+gh api graphql -f query='
+  query($issueNodeId: ID!, $projectId: ID!) {
+    node(id: $projectId) {
+      ... on ProjectV2 {
+        items(first: 100) {
+          nodes {
+            id
+            content {
+              ... on Issue {
+                id
+              }
+            }
+          }
+        }
+      }
+    }
+  }' -f issueNodeId="[ISSUE_NODE_ID]" \
+     -f projectId="[PROJECT_ID]" \
+     --jq '.data.node.items.nodes[] | select(.content.id == "[ISSUE_NODE_ID]") | .id'
+```
+
+**Paso 2: Actualizar el campo Status**
+
+```bash
+gh api graphql -f query='
+  mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $optionId: String!) {
+    updateProjectV2ItemFieldValue(input: {
+      projectId: $projectId
+      itemId: $itemId
+      fieldId: $fieldId
+      value: {singleSelectOptionId: $optionId}
+    }) {
+      projectV2Item {
+        id
+      }
+    }
+  }' -f projectId="[PROJECT_ID]" \
+     -f itemId="[ITEM_ID]" \
+     -f fieldId="[STATUS_FIELD_ID]" \
+     -f optionId="[OPTION_ID]"
+```
+
+Donde `[OPTION_ID]` es:
+- `TODO_OPTION_ID` para mover a "Todo"
+- `IN_PROGRESS_OPTION_ID` para mover a "In Progress"
+- `DONE_OPTION_ID` para mover a "Done"
+
+### E. Crear Workflows de Automatización
+
+El agente debe crear workflows en `.github/workflows/project-board-automation.yml` con las siguientes automatizaciones:
+
+#### Automatizaciones Recomendadas:
+
+1. **Auto-añadir issues con label Sprint:**
+   - Trigger: `issues.opened` + tiene label `Sprint: X`
+   - Acción: Añadir al proyecto
+
+2. **Auto-mover a Todo:**
+   - Trigger: `issues.opened` o `issues.reopened`
+   - Condición: NO tiene label `Epic`
+   - Acción: Mover a columna "Todo"
+
+3. **Auto-mover a In Progress:**
+   - Trigger: `issues.assigned` O `issues.labeled` (label: `Status: In Progress`)
+   - Condición: NO tiene label `Epic`
+   - Acción: Mover a columna "In Progress"
+
+4. **Auto-mover a Done:**
+   - Trigger: `issues.closed`
+   - Condición: NO tiene label `Epic`
+   - Acción: Mover a columna "Done"
+
+5. **Marcar PR como Needs Review:**
+   - Trigger: `pull_request.opened`
+   - Acción: Añadir label `Status: Needs Review` a issues vinculadas
+
+#### Template de Workflow:
+
+```yaml
+name: Project Board Automation
+
+on:
+  issues:
+    types: [opened, labeled, assigned, closed, reopened]
+  pull_request:
+    types: [opened, ready_for_review]
+
+env:
+  PROJECT_ID: [GUARDAR_AQUI]
+  STATUS_FIELD_ID: [GUARDAR_AQUI]
+  TODO_OPTION_ID: [GUARDAR_AQUI]
+  IN_PROGRESS_OPTION_ID: [GUARDAR_AQUI]
+  DONE_OPTION_ID: [GUARDAR_AQUI]
+
+jobs:
+  # Ver archivo completo en .github/workflows/project-board-automation.yml
+```
+
+### F. Flujo de Trabajo del Agente al Configurar un Proyecto Nuevo
+
+**Checklist para el agente:**
+
+1. [ ] Verificar autenticación de GitHub CLI con scopes `project` y `read:project`
+2. [ ] Crear el GitHub Project con `gh project create`
+3. [ ] Guardar el `PROJECT_ID` del JSON resultante
+4. [ ] Obtener `STATUS_FIELD_ID` y los IDs de opciones (Todo, In Progress, Done) con `gh project field-list`
+5. [ ] Guardar todos los IDs en variables de entorno del workflow
+6. [ ] Crear archivo `.github/workflows/project-board-automation.yml` con las automatizaciones
+7. [ ] Añadir todas las issues del sprint actual al proyecto con `gh project item-add`
+8. [ ] Mover issues desde "No Status" a "Todo" usando GraphQL API
+9. [ ] Documentar el PROJECT_ID y comandos útiles en el README o docs del proyecto específico
+10. [ ] Commitear los workflows y hacer push
+
+### G. Comandos de Consulta Útiles
+
+```bash
+# Listar todos los proyectos del owner
+gh project list --owner [USERNAME] --format json
+
+# Ver detalles de un proyecto
+gh project view [PROJECT_NUMBER] --owner [USERNAME] --format json
+
+# Listar items del proyecto
+gh project item-list [PROJECT_NUMBER] --owner [USERNAME] --format json
+
+# Listar campos del proyecto
+gh project field-list [PROJECT_NUMBER] --owner [USERNAME] --format json
+```
+
+### H. Notas Importantes
+
+- **Épicas:** NO añadir al proyecto Kanban. Solo crear la issue con label `Epic` y mantenerla fuera del board.
+- **Sub-issues:** Idealmente las tareas deberían crearse como sub-issues de una Épica, pero crear issues regulares vinculadas también funciona.
+- **Status "No Status":** Issues nuevas aparecen en "No Status" hasta que el workflow las mueva. Asegurar que el workflow se ejecuta correctamente.
+- **Permisos:** El `GITHUB_TOKEN` por defecto tiene permisos suficientes para mover items en el proyecto. Si se necesita un PAT, usar `secrets.PROJECT_PAT`.

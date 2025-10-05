@@ -2,7 +2,7 @@
 
 **Periodo:** 2025-10-04 - TBD
 
-**Épica Maestra en GitHub:** [Pendiente - Crear Issue Epic en GitHub]
+**Épica Maestra en GitHub:** https://github.com/eddndev/eddn.dev/issues/2
 
 ---
 
@@ -17,44 +17,44 @@ Establecer la fundación técnica del portafolio implementando el sistema de dis
 ## 2. Alcance y Tareas Incluidas
 
 ### Configuración y Setup
-- [ ] `#001 - Configurar Tailwind con design tokens (colores purple/blue, tipografía Inter)`
-- [ ] `#002 - Configurar dark mode en Tailwind (class strategy)`
-- [ ] `#003 - Crear estructura de archivos CSS/JS base`
+- [ ] `#3 - [Setup] Configurar Tailwind con design tokens`
+- [ ] `#4 - [Setup] Configurar dark mode en Tailwind (class strategy)`
+- [ ] `#5 - [Setup] Crear estructura de archivos CSS/JS base`
 
 ### Database y Modelos
-- [ ] `#004 - Crear migraciones basadas en database schema (posts, projects, resources, etc.)`
-- [ ] `#005 - Crear modelos Eloquent con relaciones`
-- [ ] `#006 - Crear seeders para datos iniciales (categories, project_types, technologies)`
+- [ ] `#6 - [Database] Crear migraciones basadas en database schema`
+- [ ] `#7 - [Database] Crear modelos Eloquent con relaciones`
+- [ ] `#8 - [Database] Crear seeders para datos iniciales`
 
 ### Layout Base
-- [ ] `#007 - Crear layout principal Blade (app.blade.php)`
-- [ ] `#008 - Implementar sistema de dark/light mode con toggle funcional`
-- [ ] `#009 - Guardar preferencia de tema en localStorage`
-- [ ] `#010 - Implementar transiciones suaves entre temas`
+- [ ] `#9 - [Layout] Crear layout principal Blade (app.blade.php)`
+- [ ] `#10 - [Layout] Implementar sistema de dark/light mode con toggle funcional`
+- [ ] `#11 - [Layout] Guardar preferencia de tema en localStorage`
+- [ ] `#12 - [Layout] Implementar transiciones suaves entre temas`
 
 ### Navegación
-- [ ] `#011 - Crear navbar sticky con backdrop blur`
-- [ ] `#012 - Implementar menú móvil hamburger responsive`
-- [ ] `#013 - Crear footer con links sociales y estructura base`
-- [ ] `#014 - Implementar estados de hover/focus accesibles en navegación`
+- [ ] `#13 - [Navegación] Crear navbar sticky con backdrop blur`
+- [ ] `#14 - [Navegación] Implementar menú móvil hamburger responsive`
+- [ ] `#15 - [Navegación] Crear footer con links sociales y estructura base`
+- [ ] `#16 - [Navegación] Implementar estados de hover/focus accesibles`
 
 ### Sistema de Animaciones
-- [ ] `#015 - Configurar GSAP + ScrollTrigger en app.js`
-- [ ] `#016 - Implementar Lenis para smooth scroll`
-- [ ] `#017 - Sincronizar Lenis con GSAP ScrollTrigger`
-- [ ] `#018 - Crear primeras animaciones de scroll (fade-up, parallax)`
-- [ ] `#019 - Implementar respeto a prefers-reduced-motion`
+- [ ] `#17 - [Animaciones] Configurar GSAP + ScrollTrigger en app.js`
+- [ ] `#18 - [Animaciones] Implementar Lenis para smooth scroll`
+- [ ] `#19 - [Animaciones] Sincronizar Lenis con GSAP ScrollTrigger`
+- [ ] `#20 - [Animaciones] Crear primeras animaciones de scroll (fade-up, parallax)`
+- [ ] `#21 - [Animaciones] Implementar respeto a prefers-reduced-motion`
 
 ### Componentes Reutilizables
-- [ ] `#020 - Crear componente Blade para botones (primario, secundario, ghost)`
-- [ ] `#021 - Crear componente Blade para cards base`
-- [ ] `#022 - Crear componente Blade para badges/tags`
+- [ ] `#22 - [Componentes] Crear componente Blade para botones`
+- [ ] `#23 - [Componentes] Crear componente Blade para cards base`
+- [ ] `#24 - [Componentes] Crear componente Blade para badges/tags`
 
 ### Testing y Optimización
-- [ ] `#023 - Probar responsive en mobile (320px+), tablet (768px+), desktop (1280px+)`
-- [ ] `#024 - Validar contraste de colores WCAG AA en ambos modos`
-- [ ] `#025 - Verificar performance de animaciones (60fps)`
-- [ ] `#026 - Testing de navegación por teclado y focus states`
+- [ ] `#25 - [Testing] Probar responsive en mobile, tablet y desktop`
+- [ ] `#26 - [Testing] Validar contraste de colores WCAG AA en ambos modos`
+- [ ] `#27 - [Testing] Verificar performance de animaciones (60fps)`
+- [ ] `#28 - [Testing] Testing de navegación por teclado y focus states`
 
 ---
 
